@@ -29,25 +29,11 @@ A production-grade automated system that:
 
 ## System Architecture
 
-### High-Level Architecture Diagram
+The high-level architecture diagram is documented in [ARCHITECTURE.md](ARCHITECTURE.md).
 
-```mermaid
-flowchart LR
-    A[Input Sources] --> B[Ingestion]
-    B --> C[YOLOv8 Detector]
-    C --> D[Tag Regions]
-    D --> E[Crop + Enhance]
-    E --> F[OCR Engine]
-    F --> G[Post-Processing]
-    G --> H[Validation]
-    H --> I[Structured Output]
-    I --> J[Retail Actions]
+## Dashboard Preview
 
-    C --> K[Metrics]
-    F --> K
-    H --> K
-    K --> L[Observability]
-```
+![Dashboard Preview](images/Dashboard.png)
 
 ---
 

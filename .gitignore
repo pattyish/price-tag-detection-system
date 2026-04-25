@@ -158,3 +158,4 @@ config.local.yaml
 # Markdown docs (keep root README tracked)
 **/*.md
 !README.md
+!ARCHITECTURE.md
