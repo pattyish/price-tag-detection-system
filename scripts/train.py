@@ -57,7 +57,7 @@ def main():
     parser.add_argument(
         '--data-dir',
         type=str,
-        default='data/train',
+        default='retail_price_tag_data/train',
         help='Path to training data'
     )
     
@@ -136,7 +136,7 @@ def main():
         
         logger.warning("Training requires a properly formatted dataset")
         logger.warning("Expected structure:")
-        logger.warning("  data/")
+        logger.warning("  retail_price_tag_data/")
         logger.warning("    images/")
         logger.warning("      *.jpg")
         logger.warning("    labels/")

@@ -119,11 +119,11 @@ dmypy.json
 .pyre/
 
 # Project specific
-data/raw/
-data/processed/
-data/train/
-data/val/
-data/test/
+retail_price_tag_data/raw/
+retail_price_tag_data/processed/
+retail_price_tag_data/train/
+retail_price_tag_data/val/
+retail_price_tag_data/test/
 models/weights/
 models/pretrained/
 results/

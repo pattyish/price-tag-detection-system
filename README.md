@@ -76,12 +76,18 @@ price-detection-system/
 ├── models/
 │   ├── weights/                    # Trained model weights
 │   └── pretrained/                 # Pretrained models
-├── data/
+├── retail_price_tag_data/          # Dataset storage (local development)
 │   ├── raw/                        # Raw downloaded data
 │   ├── processed/                  # Processed dataset
 │   ├── train/                      # Training splits
+│   │   ├── images/
+│   │   └── labels/
 │   ├── val/                        # Validation splits
+│   │   ├── images/
+│   │   └── labels/
 │   └── test/                       # Test splits
+│       ├── images/
+│       └── labels/
 ├── logs/
 │   ├── training/                   # Training logs
 │   ├── inference/                  # Inference logs
@@ -156,29 +162,70 @@ price-detection-system/
 
 ## Quick Start
 
+### Installation & Setup
 ```bash
-# 1. Clone and setup
+# Clone and setup environment
 git clone <repo>
 cd price-detection-system
 python -m venv venv
 source venv/bin/activate  # or `venv\Scripts\activate` on Windows
 pip install -r requirements.txt
-
-# 2. Download dataset
-python scripts/download_dataset.py --dataset retail-ocr
-
-# 3. Train model
-python scripts/train.py --config config/config.yaml --epochs 100
-
-# 4. Run inference
-python scripts/infer.py --image <path> --model models/weights/best.pt
-
-# 5. Run API server
-python -m src.inference.api --port 8000
-
-# 6. Run Streamlit dashboard
-streamlit run streamlit_app.py
 ```
+
+### Run Interactive Dashboard (Recommended for Demo)
+```bash
+streamlit run streamlit_app.py
+# Opens interactive dashboard at http://localhost:8501
+# Upload images → View detection results → Export JSON/PNG
+```
+
+### Run Inference on Single Image
+```bash
+# Requires a trained model (or pretrained YOLOv8 weights)
+python scripts/infer.py --image <path/to/image.jpg> --config config/config.yaml
+```
+
+### Start REST API Server
+```bash
+# Requires FastAPI and uvicorn
+python -m src.inference.api --port 8000
+# API: POST /api/v1/detect | GET /api/v1/health | GET /api/v1/metrics
+# Docs: http://localhost:8000/docs
+```
+
+### Train on Custom Dataset
+```bash
+# Requires a YOLO-formatted dataset with dataset.yaml in root
+# Place dataset in: retail_price_tag_data/ with train/val/test splits
+python scripts/train.py --dataset retail_price_tag_data --epochs 100
+```
+
+### Evaluate Trained Model
+```bash
+# Validate model performance on test set
+python scripts/evaluate.py --model models/weights/best.pt --dataset retail_price_tag_data
+```
+
+---
+
+## Dataset Structure
+
+The `retail_price_tag_data/` directory should be organized as:
+```
+retail_price_tag_data/
+├── dataset.yaml              # YOLO format config (generated or provided)
+├── train/
+│   ├── images/              # Training images
+│   └── labels/              # YOLO format .txt annotations
+├── val/
+│   ├── images/              # Validation images
+│   └── labels/              # YOLO format .txt annotations
+└── test/
+    ├── images/              # Test images
+    └── labels/              # YOLO format .txt annotations
+```
+
+**For Docker:** Mount the local path to `/mnt/retail_price_tag_data` inside the container.
 
 ---
 

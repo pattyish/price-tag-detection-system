@@ -19,11 +19,11 @@ ocr:
 
 data:
   data_dir: "data"
-  train_dir: "data/train"
-  val_dir: "data/val"
-  test_dir: "data/test"
-  raw_dir: "data/raw"
-  processed_dir: "data/processed"
+  train_dir: "retail_price_tag_data/train"
+  val_dir: "retail_price_tag_data/val"
+  test_dir: "retail_price_tag_data/test"
+  raw_dir: "retail_price_tag_data/raw"
+  processed_dir: "retail_price_tag_data/processed"
   train_split: 0.7
   val_split: 0.2
   test_split: 0.1

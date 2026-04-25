@@ -36,11 +36,11 @@ class OCRConfig:
 class DataConfig:
     """Data configuration."""
     data_dir: str = "data"
-    train_dir: str = "data/train"
-    val_dir: str = "data/val"
-    test_dir: str = "data/test"
-    raw_dir: str = "data/raw"
-    processed_dir: str = "data/processed"
+    train_dir: str = "retail_price_tag_data/train"
+    val_dir: str = "retail_price_tag_data/val"
+    test_dir: str = "retail_price_tag_data/test"
+    raw_dir: str = "retail_price_tag_data/raw"
+    processed_dir: str = "retail_price_tag_data/processed"
     train_split: float = 0.7
     val_split: float = 0.2
     test_split: float = 0.1

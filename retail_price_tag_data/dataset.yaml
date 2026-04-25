@@ -1,0 +1,7 @@
+path: ./retail_price_tag_data
+train: train/images
+val: val/images
+test: test/images
+nc: 1
+names:
+- price_tag
