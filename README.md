@@ -1,5 +1,7 @@
 # Retail Price Tag Detection & OCR Extraction System
 
+![Raw Shelf Image](images/rawshelf.png)
+
 ## Problem Statement & Business Value
 
 ### The Problem
