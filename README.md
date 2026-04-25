@@ -32,21 +32,21 @@ A production-grade automated system that:
 ### High-Level Architecture Diagram
 
 ```mermaid
-flowchart TD
-    A[Input Sources<br/>Shelf Camera / Mobile Upload / Batch Folder] --> B[Ingestion Layer<br/>Validation + Decode + Resize]
-    B --> C[YOLOv8 Price Tag Detector]
-    C --> D[Detected Price Tag Regions<br/>Bounding Boxes + Scores]
-    D --> E[Region Cropping + Enhancement]
-    E --> F[OCR Engine<br/>EasyOCR or Tesseract]
-    F --> G[Post-Processing<br/>Regex + Currency + Confidence Rules]
-    G --> H[Price Validation<br/>Range + Catalog Match + Anomaly Checks]
-    H --> I[Structured Output<br/>JSON + API Response]
-    I --> J[Downstream Systems<br/>Pricing Audit / Alerts / BI / Compliance]
+flowchart LR
+    A[Input Sources] --> B[Ingestion]
+    B --> C[YOLOv8 Detector]
+    C --> D[Tag Regions]
+    D --> E[Crop + Enhance]
+    E --> F[OCR Engine]
+    F --> G[Post-Processing]
+    G --> H[Validation]
+    H --> I[Structured Output]
+    I --> J[Retail Actions]
 
-    C --> K[Model Metrics]
+    C --> K[Metrics]
     F --> K
     H --> K
-    K --> L[Observability<br/>Logs + Counters + Error Tracking]
+    K --> L[Observability]
 ```
 
 ---
