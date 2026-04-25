@@ -49,49 +49,6 @@ flowchart TD
     K --> L[Observability<br/>Logs + Counters + Error Tracking]
 ```
 
-```
-Price Detection Pipeline:
-┌──────────────────┐
-│  Camera/Image    │
-│    Input         │
-└────────┬─────────┘
-         │
-         ▼
-┌──────────────────────────────┐
-│  YOLO8 Detection Model       │  (Detects price tag bounding boxes)
-│  - YOLOv8n/m/l variants      │
-│  - Custom trained on prices  │
-└────────┬─────────────────────┘
-         │
-         ▼
-┌──────────────────────────────┐
-│  Price Region Extraction     │  (Crops detected regions)
-└────────┬─────────────────────┘
-         │
-         ▼
-┌──────────────────────────────┐
-│  OCR Engine (EasyOCR/Tesseract) │ (Extracts text from price tags)
-│  - Text recognition          │
-│  - Confidence scoring        │
-└────────┬─────────────────────┘
-         │
-         ▼
-┌──────────────────────────────┐
-│  Post-processing             │  (Parse price values)
-│  - Currency/format detection │
-│  - Value validation          │
-│  - Confidence filtering      │
-└────────┬─────────────────────┘
-         │
-         ▼
-┌──────────────────────────────┐
-│  Output & Logging            │  (Results, alerts, logs)
-│  - Database storage          │
-│  - Audit trails              │
-│  - Anomaly detection         │
-└──────────────────────────────┘
-```
-
 ---
 
 ## Project Structure
@@ -157,6 +114,7 @@ price-detection-system/
 │   └── evaluate.py                 # Evaluation script
 ├── requirements.txt                 # Python dependencies
 ├── setup.py                        # Package setup
+├── streamlit_app.py                # Streamlit dashboard app
 ├── .env.example                    # Environment variables template
 ├── Dockerfile                      # Container configuration
 └── README.md                       # This file
@@ -229,6 +187,9 @@ python scripts/infer.py --image <path> --model models/weights/best.pt
 
 # 5. Run API server
 python -m src.inference.api --port 8000
+
+# 6. Run Streamlit dashboard
+streamlit run streamlit_app.py
 ```
 
 ---

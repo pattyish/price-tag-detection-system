@@ -46,6 +46,7 @@ setup(
         "fastapi>=0.100.0",
         "uvicorn[standard]>=0.20.0",
         "pydantic>=1.10.0",
+        "streamlit>=1.36.0",
     ],
     extras_require={
         "all": [
